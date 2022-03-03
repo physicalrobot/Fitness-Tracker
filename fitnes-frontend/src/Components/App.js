@@ -1,6 +1,9 @@
 import logo from '../logo.svg';
-import React from 'react';
-import Calendar from './Calendar';
+import React, { useState } from 'react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import moment from 'moment';
+
 import TodayWorkout from './TodayWorkout';
 import ProfileInfo from './ProfileInfo';
 import Dictionary from './Dictionary';
@@ -10,6 +13,14 @@ import Dictionary from './Dictionary';
 import '../App.css';
 
 function App() {
+  const [date, setDate] = useState(new Date());
+  const changeDate = (e) => {
+    setDate(e)
+  }
+
+  function Day() {
+    return console.log(date)
+  }
 
 
   return (
@@ -21,12 +32,13 @@ function App() {
 
 
       <div className="Header">
-        <svg width="760" height="138" viewBox="0 0 760 138" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="760" height="138" rx="20" fill="#332A7C" />
-        </svg>
+
+        <div className="HeaderText">Back at it again.</div>
       </div>
-      <Calendar />
-      <TodayWorkout />
+      <div className="Calendar">
+        <Calendar onChange={changeDate} value={date} onClickDay={() => console.log(date)} />
+      </div>
+      <TodayWorkout date={date} />
       <ProfileInfo />
       <Dictionary />
 
