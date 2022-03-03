@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+
+<head>
+
+
+  <link rel="stylesheet" href="src/index.css">
+
+
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,20 +20,58 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  <title>React App</title>
+</head>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <!-- Manipulating SVG -------------------------------------------------------------- -->
+  <!-- 
+  <div class='line-container'>
+    <svg viewBox="0 0 312 1024" fill="none" preserveAspectRatio="xMidYMax meet">
+      <path
+        d="M156.5 1C176.999 57 113.368 79.3066 176.37 172.807C241.113 268.892 4.00006 309.5 176.37 452.307C282.855 553.025 194.867 664.412 159.49 706M55.5 709.5L106 680.5L156.5 707.5L207.5 738.5M55.5 709.5L106 738.5M55.5 709.5V766.5L3.5 797L54 825.5L106 797M106 738.5L156.5 709.5C157.446 708.396 158.445 707.228 159.49 706M106 738.5V795.5M159.49 706L206 680.5L256.5 711M256.5 711L207.5 738.5M256.5 711V766.5L306.5 795.5M207.5 738.5L206 795.5M106 797V795.5M106 797C106 801.8 106 835 106 851L155 880L206 851V795.5M106 795.5C122.333 785.833 155.3 766.5 156.5 766.5C157.7 766.5 190 785.833 206 795.5M206 795.5L258.5 825.5M306.5 795.5L258.5 825.5M306.5 795.5V853L258.5 880M258.5 825.5C258.5 841.75 258.5 872.775 258.5 880M2 797L3.5 853L54 881.5M54 881.5V827.5M54 881.5L106 910M54 881.5C54 923.1 54 936.833 54 938.5L104 967.5M106 910L155 881.5L207.5 910C224.5 901 258.5 882.7 258.5 881.5C258.5 881.402 258.5 881.069 258.5 880.529M106 910L105.5 967.5L156 939.5L206.5 966M258.5 880C258.5 880.194 258.5 880.37 258.5 880.529M258.5 880.529L257 938.5C240.167 947.833 206.5 966.4 206.5 966M206.5 966C206.5 965.6 206.833 928.833 207 910.5"
+        stroke="#24A7C4" stroke-width="3" />
+    </svg>
+
+  </div>
+
+  <section class="one">
+    <h1 class="scroll" data-rate=".1" data-direction="vertical">ocean stuff</h1>
+  </section>
+
+  <section class="two">
+    <h1 class="scroll" data-rate=".1" data-direction="vertical">omg scroll</h1>
+    <p>big watermark</p>
+  </section> -->
+
+  <!-- <script>
+    var path = document.querySelector('path');
+    var pathLength = path.getTotalLength();
+
+    path.style.strokeDasharray = pathLength + '    ' + pathLength;
+
+    path.style.strokeDashoffset = pathLength;
+
+    window.addEventListener('scroll', () => {
+
+      var scrollPercentage = (document.documentElement.scrollTop + document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+
+
+      var drawLength = pathLength * scrollPercentage;
+
+      path.style.strokeDashoffset = pathLength - drawLength;
+
+    })
+
+  </script> -->
+
+
+
+  <div id="root"></div>
+
+
+</body>
+
 </html>

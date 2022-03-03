@@ -1,38 +1,152 @@
-.App {
-  text-align: center;
+
+
+.ProfileInfo{
+
+    position: absolute;
+    width: 277px;
+    height: 800px;
+    left: 25px;
+    top: 56px;
+    
+    background: #363635;
+    /* shadow 1 */
+    
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 28px;
+
+}
+.ProfilePic{
+    
+    position: absolute;
+    width: 153px;
+    height: 153px;
+    left:23%;
+    top: 30px;
+    }
+
+/* Ellipse 23 */
+
+.Name{
+
+    position: absolute;
+    width: 153px;
+    height: 153px;
+    left: 81px;
+    top: 88px;
+    
+    background: #169C9C;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.User{
+    position: absolute;
+width: 217.17px;
+height: 31px;
+left: 19%;
+top: 194px;
+
+font-family: Calibri;
+font-style: normal;
+font-weight: bold;
+font-size: 25px;
+line-height: 31px;
+/* identical to box height */
+
+letter-spacing: 0.5px;
+
+color: #FFFFFF;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.Info{
+    
+position: absolute;
+width: 57.52px;
+height: 48px;
+left: 20%;
+top: 245px;
+
+font-family: Calibri;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 24px;
+/* or 150% */
+
+letter-spacing: 0.5px;
+
+color: white;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Header{
+    position: absolute;
+    width: 760px;
+    height: 138px;
+    left: 333px;
+    top: 64px;
+
 }
 
-.App-link {
-  color: #61dafb;
+/* .HeaderText{
+    position:absolute;
+    top:40px;
+    left:20px;
+    font-family: Calibri;
+font-style: normal;
+font-weight: bold;
+font-size: 34px;
+line-height: 29px;
+letter-spacing: 0.5px;
+
+
+color: #FFFFFF;
+} */
+
+
+.Calendar{
+position: absolute;
+height: 651px;
+left: 310px;
+top: 210px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.TodayWorkout{
+position: absolute;
+width: 293px;
+height: 800px;
+left: 1125px;
+top: 56px;
+
+background: #363635;
+/* 1 */
+
+box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+border-radius: 28px;
+
+
+font-family: Calibri;
+font-style: normal;
+font-weight: bold;
+font-size: 32px;
+line-height: 39px;
+letter-spacing: 0.5px;
+
+color: #169C9C;
 }
+
+.TodayW{
+    
+position: absolute;
+width: 236px;
+height: 92.46px;
+left:10%;
+top: 30px;
+}
+
+.WorkoutInventoryConsole{
+position: absolute;
+width: 1358px;
+height: 1282px;
+left: 33px;
+top: 900px;
+}
+
