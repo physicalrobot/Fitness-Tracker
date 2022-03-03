@@ -1,4 +1,4 @@
-import logo from '../logo.svg';
+import powerup from './pictures/goku-saiyan.gif'
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -32,8 +32,9 @@ function App() {
 
 
       <div className="Header">
-
         <div className="HeaderText">Back at it again.</div>
+        <img className="HeaderAnimation" src={powerup} alt='workoutbuddy' />
+
       </div>
       <div className="Calendar">
         <Calendar onChange={changeDate} value={date} onClickDay={() => console.log(date)} />
