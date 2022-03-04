@@ -18,9 +18,8 @@ function App() {
     setDate(e)
   }
 
-  function Day() {
-    return console.log(date)
-  }
+
+
 
 
   return (
@@ -37,7 +36,7 @@ function App() {
 
       </div>
       <div className="Calendar">
-        <Calendar onChange={changeDate} value={date} onClickDay={() => console.log(date)} />
+        <Calendar onChange={changeDate} value={date} />
       </div>
       <TodayWorkout date={date} />
       <ProfileInfo />

@@ -86,9 +86,9 @@ color: white;
     
 position: absolute;
 width: 800px;
-height: 138px;
+height: 140px;
 left: 315px;
-top: 64px;
+top: 58px;
 
 background: linear-gradient(0deg, #332A7C, #332A7C);
 border-radius: 20px;
@@ -166,7 +166,7 @@ top: 210px;
 .TodayWorkout{
 position: absolute;
 width: 293px;
-height: 800px;
+height: 802px;
 left: 1125px;
 top: 56px;
 
@@ -192,8 +192,10 @@ color: #169C9C;
 position: absolute;
 width: 236px;
 height: 92.46px;
-left:10%;
+left:6%;
 top: 30px;
+font-family: 'Lobster', cursive;
+
 }
 
 .WorkoutDate{
@@ -232,7 +234,7 @@ height: 32.4px;
 left: 500px;
 top: 50px;
 
-font-family: Calibri;
+font-family: 'Lobster', cursive;
 font-style: normal;
 font-weight: bold;
 font-size: 42px;
