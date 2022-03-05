@@ -120,7 +120,7 @@ color: #FFFFFF;
  .Search{
      position: relative;
      top:200px;
-     left:130px;
+     left:100px;
      width:860px;
      height:50px;
      border-radius: 15px;
@@ -133,8 +133,8 @@ color: #FFFFFF;
         position: absolute;
 width: 143px;
 height: 52px;
-left: 1010px;
-top: 200px;
+left: 995px;
+top: 202px;
 color:white;
 font-size: large;
 
@@ -146,7 +146,7 @@ border-radius: 10px;
 width: 143px;
 height: 52px;
 left: 1160px;
-top: 200px;
+top: 202px;
 color:white;
 font-size: large;
 background: linear-gradient(0deg, #332A7C, #332A7C);
@@ -210,8 +210,9 @@ text-align:center;
 font-size: 14px;
 top:80px;
 color:white;
-
 }
+
+
 
 .WorkoutInventoryConsole{
 /* position: absolute;
@@ -250,3 +251,186 @@ letter-spacing: 0.5px;
 
 color: #169C9C;
 }
+
+.TodaysWorkoutList {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    justify-content: flex-end;
+  }
+  
+  
+  /* Buttons for Workout Groups  */
+
+  .searchandnewbutton{
+      position:absolute;
+      margin:0 auto;
+      top:0px;
+      left:-4px;
+  }
+
+  .Buttons{
+      position:relative;
+      margin:0 auto;
+      left:20px;
+      top:300px;      
+  }
+
+  .Buttons h1 {
+
+    font-family: 'Lobster', cursive;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 29px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color:white;
+    }
+    
+
+  /* Cardio */
+  .Cardiobutton{
+
+position: absolute;
+width: 240px;
+height: 303px;
+left: 80px;
+top: 30%;
+
+background: linear-gradient(0deg, #672A7C, #672A7C);
+border-radius: 20px;
+  }
+
+.Cardiobuttontitle{
+position: absolute;
+width: 240px;
+height: 100px;
+left: 0px;
+top: 0px;
+
+
+background: linear-gradient(0deg, #f4477200, #f4477257);
+border-radius: 20px;
+}
+
+/* Vector */
+
+.Cardiobuttonvector{
+position: absolute;
+left: 17%;
+right: 22.29%;
+top: 34.66%;
+bottom: 10.26%;
+  }
+
+
+/* Arms */
+
+  .Armsbutton{
+
+    position: absolute;
+    width: 240px;
+    height: 303px;
+    left: 400px;
+    top: 30%;
+    
+    background: linear-gradient(0deg, #2a727c, #1fbebe);
+    border-radius: 20px;
+      }
+    
+    .Armsbuttontitle{
+    position: absolute;
+    width: 240px;
+    height: 100px;
+    left: 0px;
+    top: 0px;
+    
+    
+    background: linear-gradient(0deg, #f4477200, hsl(239, 89%, 62%));
+    border-radius: 20px;
+    
+    }
+    /* Vector */
+    
+    .Armsbuttonvector{
+    position: absolute;
+    left: 17%;
+    right: 22.29%;
+    top: 34.66%;
+    bottom: 10.26%;
+      }
+
+      /* Core */
+
+      .Corebutton{
+
+        position: absolute;
+        width: 240px;
+        height: 303px;
+        left: 720px;
+        top: 30%;
+        
+        background: linear-gradient(0deg, hsl(285, 45%, 26%), #672A7C);
+        border-radius: 20px;
+          }
+        
+        .Corebuttontitle{
+        position: absolute;
+        width: 240px;
+        height: 100px;
+        left: 0px;
+        top: 0px;
+        
+        
+        background: linear-gradient(0deg, #f4477200, #f4477257);
+        border-radius: 20px;
+        
+        }
+        /* Vector */
+        
+        .Corebuttonvector{
+        position: absolute;
+        left: 15%;
+        right: 22.29%;
+        top: 34.66%;
+        bottom: 10.26%;
+          }
+
+             /* Yoga */
+
+      .Yogabutton{
+
+        position: absolute;
+        width: 240px;
+        height: 303px;
+        left: 1040px;
+        top: 30%;
+        
+        background: linear-gradient(0deg, #2a727c, #1fbebe);
+        border-radius: 20px;
+          }
+        
+        .Yogabuttontitle{
+        position: absolute;
+        width: 240px;
+        height: 100px;
+        left: 0px;
+        top: 0px;
+        
+        
+        background: linear-gradient(0deg, #f4477200, hsl(239, 89%, 62%));
+        border-radius: 20px;
+        
+        }
+        /* Vector */
+        
+        .Yogabuttonvector{
+        position: absolute;
+        left: 11%;
+        right: 22.29%;
+        top: 34.66%;
+        bottom: 10.26%;
+          }
+

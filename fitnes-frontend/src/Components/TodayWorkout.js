@@ -27,7 +27,7 @@ function TodayWorkout({ date, workouts, onWorkoutDelete }) {
 
 
             <div className='TodaysWorkoutList'>
-                <ul>
+                {/* <ul>
                     {workouts.map((workout) => (
                         <Workout
                             key={workout.id}
@@ -35,7 +35,7 @@ function TodayWorkout({ date, workouts, onWorkoutDelete }) {
                             onWorkoutDelete={onWorkoutDelete}
                         />
                     ))}
-                </ul>
+                </ul> */}
 
             </div>
 
