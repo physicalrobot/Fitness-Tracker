@@ -193,16 +193,23 @@ position: absolute;
 width: 236px;
 height: 92.46px;
 left:6%;
-top: 30px;
+top: 50px;
 font-family: 'Lobster', cursive;
 
+}
+
+.TodaysWorkoutList{
+    position:relative;
+    top: 80px;
+    font-size:15px;
 }
 
 .WorkoutDate{
 position:relative;
 text-align:center;
 font-size: 14px;
-top:60px;
+top:80px;
+color:white;
 
 }
 

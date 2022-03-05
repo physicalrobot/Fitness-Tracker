@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import moment from 'moment';
+import Workout from './Workout'
 
 
 
-function TodayWorkout({ date }) {
+function TodayWorkout({ date, workouts, onWorkoutDelete }) {
     const [day, setDay] = useState()
 
     // Can't isolate the Day Name for some reason
@@ -23,6 +24,20 @@ function TodayWorkout({ date }) {
         <div className='TodayWorkout'>
             <div className='TodayW'>Workouts:</div>
             <p className='WorkoutDate'>Current selected date: <b>{moment(date).format('MMMM Do YYYY')}</b></p>
+
+
+            <div className='TodaysWorkoutList'>
+                <ul>
+                    {workouts.map((workout) => (
+                        <Workout
+                            key={workout.id}
+                            workout={workout}
+                            onWorkoutDelete={onWorkoutDelete}
+                        />
+                    ))}
+                </ul>
+
+            </div>
 
 
         </div>
