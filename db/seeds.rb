@@ -3,19 +3,19 @@ puts "🌱 Seeding spices..."
 # Seed your database here
 Workout.create([
     {
-      body: "pull-ups 👋",
+      name: "pull-ups 👋",
     },
     {
-      body: "push-ups",
+      name: "push-ups",
     },
     {
-      body: "let's get this chat app working",
+      name: "let's get this chat app working",
     },
     {
-      body: "ngl, this looks like a lot 😬",
+      name: "ngl, this looks like a lot 😬",
     },
     {
-      body: "You got this! 💪",
+      name: "You got this! 💪",
     }
   ])
 puts "✅ Done seeding!"

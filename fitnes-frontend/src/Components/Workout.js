@@ -4,7 +4,7 @@ function Workout({ workout, onWorkoutDelete }) {
     const [isEditing, setIsEditing] = useState(false);
 
 
-    const { id, body, created_at: createdAt } = workout
+    const { id, name, body, created_at: createdAt } = workout
 
 
     function handleDeleteClick() {
@@ -20,7 +20,7 @@ function Workout({ workout, onWorkoutDelete }) {
 
     return (
         <li>
-            <p>{body}</p>
+            <p>{name}</p>
             <div className="actions">
 
                 <button onClick={handleDeleteClick}>
