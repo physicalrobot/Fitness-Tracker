@@ -38,9 +38,9 @@ function App() {
   }, []);
   console.log(workouts)
 
-  // function handleAddWorkout(newWorkout) {
-  //   setWorkouts([...workouts, newWorkout]);
-  // }
+  function handleAddWorkout(newWorkout) {
+    setWorkouts([...workouts, newWorkout]);
+  }
 
   function handleDeleteWorkout(id) {
     const updatedWorkouts = workouts.filter((workout) => workout.id !== id);
@@ -82,7 +82,7 @@ function App() {
       </header>
       <Routes>
         <Route path="/" element={<ProfileInfo />} />
-        <Route path="/new-workout" element={<NewWorkout />} />
+        <Route path="/new-workout" element={<NewWorkout handleAddWorkout={handleAddWorkout} />} />
 
       </Routes>
 

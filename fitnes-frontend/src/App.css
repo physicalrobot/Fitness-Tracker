@@ -336,14 +336,14 @@ scrollbar-base-color: blue;
   position: absolute;
 width: 483px;
 height: 471px;
-left: 935px;
+left: 905.5px;
 top: 609px;
+padding-left: 30px;
 
 background: #363635;
 /* shadow 1 */
 
 z-index: 1000;
-border-radius: 28px;
 }
 
 

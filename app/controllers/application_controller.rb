@@ -12,10 +12,10 @@ class ApplicationController < Sinatra::Base
 
   end
 
-  # post "/messages" do
-  #   message = Message.create(body: params[:body], username: params[:username])
-  #   message.to_json
-  # end
+  post "/workouts" do
+    workouts = Workout.create(body: params[:body], name: params[:name])
+    workouts.to_json
+  end
   
   # patch "/messages/:id" do
   #   message = Message.find(params[:id])

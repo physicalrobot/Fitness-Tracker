@@ -1,56 +1,100 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 
 
-function NewWorkout() {
+function NewWorkout({ handleAddWorkout }) {
+
+    const [workout, setWorkout] = useState({});
+
+    const [name, setName] = useState('');
+    const [body, setBody] = useState('');
+
+
+
+
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const workoutData = {
+            name: name,
+            body: body
+        };
+
+        // fetches data and sets it to
+        fetch("http://localhost:9292/workouts", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            workout: JSON.stringify({
+                name: "",
+                body: "",
+            }),
+        })
+            .then((r) => r.json())
+            .then(workoutData => {
+                handleAddWorkout(workoutData)
+
+
+            })
+    }
 
 
 
     return (
         <div>
-            <div className='NewWorkoutBackground'>
+            <form className="addform"
+                onSubmit={handleSubmit}
+            >
 
-                <input
-                    className='AddWorkoutInputName'
-                    type="text"
-                    placeholder="Name"
+                <div className='NewWorkoutBackground'>
 
-                ></input>
+                    <input
+                        className='AddWorkoutInputName'
+                        type="text"
+                        placeholder="Name"
+                        onChange={(e) => setName(e.target.value)}
 
-                <div className='AddToCategory'>
-                    <input type="radio" value="cardio" name="category" /> Cardio
-                    <input type="radio" value="arms" name="category" /> Arms
-                    <input type="radio" value="core" name="category" /> Core
-                    <input type="radio" value="yoga" name="category" /> Yoga
+
+                    ></input>
+
+                    <div className='AddToCategory'>
+                        <input type="radio" value="cardio" name="category" /> Cardio
+                        <input type="radio" value="arms" name="category" /> Arms
+                        <input type="radio" value="core" name="category" /> Core
+                        <input type="radio" value="yoga" name="category" /> Yoga
+
+                    </div>
+
+
+
+                    <textarea
+                        className='AddWorkoutInputBody'
+                        placeholder='Description'
+                        type="text"
+                        onChange={(e) => setBody(e.target.value)}
+
+
+                    ></textarea>
+
+
+                    <div className='NewWorkoutButtons'>
+
+                        <button type="submit" className="AddWorkoutButton" >Add<span></span>
+                        </button>
+
+                        <Link to="/"><button className="CancelAddWorkoutButton">Cancel<span></span>
+                        </button></Link>
+                    </div>
 
                 </div>
+            </form>
 
 
 
-                <textarea
-                    className='AddWorkoutInputBody'
-                    placeholder='Description'
-                    type="text"
-
-                ></textarea>
-
-
-                <div className='NewWorkoutButtons'>
-
-                    <Link to="/"><button className="AddWorkoutButton">Add<span></span>
-                    </button></Link>
-
-                    <Link to="/"><button className="CancelAddWorkoutButton">Cancel<span></span>
-                    </button></Link>
-                </div>
-
-            </div>
-
-
-
-        </div>
+        </div >
 
     )
 }
