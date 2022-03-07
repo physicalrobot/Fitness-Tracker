@@ -10,11 +10,12 @@ import Dictionary from './Dictionary';
 
 
 
+
 import '../App.css';
 
 function App() {
   const [date, setDate] = useState(new Date());
-  const [workouts, setWorkouts] = useState();
+  const [workouts, setWorkouts] = useState([]);
   const [search, setSearch] = useState("");
 
 
@@ -41,6 +42,12 @@ function App() {
     setWorkouts(updatedWorkouts);
   }
 
+  const displayedWorkouts = workouts.filter((workout) =>
+    workout.name.toLowerCase().includes(search.toLowerCase())
+  )
+  console.log(displayedWorkouts)
+
+
   // function handleUpdateWorkout(updatedWorkoutObj) {
   //   const updateWorkouts = workouts.map((workout) => {
   //     if (workout.id === updatedWorkoutObj.id) {
@@ -57,7 +64,6 @@ function App() {
   // const displayedWorkouts = workouts.filter((workout) =>
   //   workout.body.toLowerCase().includes(search.toLowerCase())
   // );
-
 
 
 
@@ -86,7 +92,7 @@ function App() {
       // workouts={displayedWorkouts} 
       />
       <ProfileInfo />
-      <Dictionary />
+      <Dictionary search={search} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts} />
 
 
 

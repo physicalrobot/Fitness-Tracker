@@ -1,4 +1,21 @@
+::-webkit-scrollbar{
+  width:2em;
 
+}
+
+::-webkit-scrollbar-track{
+  background:transparent;
+  
+  border-radius: 100vw;
+  margin-block: .5em;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#332A7C;
+  border-radius: 100vw;
+  border:.25em  #332A7C;
+
+}
 
 .ProfileInfo{
 
@@ -225,7 +242,7 @@ top: 900px; */
 
 position: absolute;
 width: 1393px;
-height: 1282px;
+height: 1400px;
 left: 26px;
 top: 900px; 
 background: #363635;
@@ -233,6 +250,8 @@ background: #363635;
 
 box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
 border-radius: 28px;
+
+
 }
 
 .InventoryTitle{
@@ -250,6 +269,50 @@ line-height: 51px;
 letter-spacing: 0.5px;
 
 color: #169C9C;
+}
+
+.InventoryOutput{
+  position: absolute;
+width: 1112px;
+height: 581px;
+top:750px;
+left:145px;
+
+background: rgba(22, 156, 156, 0.35);
+/* 1 */
+
+box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+border-radius: 28px;
+
+
+overflow-x: hidden;
+overflow-y: scroll ;
+
+scrollbar-base-color: blue;
+
+}
+
+.listHeaders{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.trashcan{
+  position:relative;
+  top:3px;
+  left:10px;
+  background:transparent;
+  border-radius: 30px;
+  border:#332A7C;
+  color:white;
+  font-size: 24px;
+}
+
+.ConsoleContent{
+  position:relative;
+  color:white;
+  width:1000px;
+  top:30px;
+
 }
 
 .TodaysWorkoutList {
@@ -434,3 +497,8 @@ bottom: 10.26%;
         bottom: 10.26%;
           }
 
+
+
+
+
+          

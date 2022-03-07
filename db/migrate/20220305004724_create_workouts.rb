@@ -3,7 +3,7 @@ class CreateWorkouts < ActiveRecord::Migration[6.1]
     create_table :workouts do |t|
       t.string :name
       t.string :body
-      t.string :muscle
+      t.string :group
       t.timestamps
   end
 end

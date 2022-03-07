@@ -26,27 +26,27 @@ body {
  .line-container{
   position: absolute;
   top:0;
-  left:50%;
+  left:55%;
   width: 100%;
   max-width: 2700px;
-  height: 130%;
+  height: 1600px;
   text-align: center;
   overflow:hidden;
   /* z-index: 1; */
   
 }
+
 .line-container2{
   position: absolute;
   top:0;
-  left:-50%;
+  left:-55%;
   width:100%;
   min-width:400px;
 
-  height: 130%;
+  height: 1600px;
   text-align: center;
   overflow:hidden;
   /* z-index: 1; */
-
 }
 svg{
   display: inline-block;

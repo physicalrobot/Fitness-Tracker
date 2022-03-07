@@ -29,6 +29,10 @@ class ApplicationController < Sinatra::Base
     workout.to_json
   end
 
+  get "/workouts/:group" do
+    workout = Workout.where(group: params[:group])
+    workout.to_json(only: [:name, :body])
+  end
 
 
 

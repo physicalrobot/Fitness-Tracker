@@ -10,6 +10,7 @@ function Workout({ workout, onWorkoutDelete }) {
     function handleDeleteClick() {
         fetch(`http://localhost:9292/workouts/${id}`, {
             method: "DELETE",
+
         });
 
         onWorkoutDelete(id);
