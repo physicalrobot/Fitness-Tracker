@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+
 import InventoryConsole from './InventoryConsole';
+
 
 function Dictionary({ wkouts, search, onWorkoutDelete, setSearch, workouts, setWorkouts }) {
 
@@ -57,18 +60,7 @@ function Dictionary({ wkouts, search, onWorkoutDelete, setSearch, workouts, setW
             .then((workouts) => setWorkouts(workouts))
     };
 
-    //     fetch("http://localhost:9292/workouts/arms"), {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
 
-    //         }
-    //             .then((r) => r.json())
-    //             .then((workoutz) => setWorkouts(workoutz))
-
-    //     }
-
-    // }
 
 
     return (
@@ -90,7 +82,9 @@ function Dictionary({ wkouts, search, onWorkoutDelete, setSearch, workouts, setW
 
             <div className='searchandnewbutton'>
                 <button className="SearchButton" onClick={All}>All</button>
-                <button className="AddNewWorkout">New</button>
+                <Link to="/new-workout"><button className="AddNewWorkout"> New<span></span>
+
+                </button></Link>
             </div>
 
             <div className='Buttons'>

@@ -1,5 +1,9 @@
-import powerup from './pictures/goku-saiyan.gif'
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+
+
+import powerup from './pictures/goku-saiyan.gif'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
@@ -7,6 +11,7 @@ import moment from 'moment';
 import TodayWorkout from './TodayWorkout';
 import ProfileInfo from './ProfileInfo';
 import Dictionary from './Dictionary';
+import NewWorkout from './NewWorkout';
 
 
 
@@ -75,8 +80,11 @@ function App() {
       <header className="App-header">
 
       </header>
+      <Routes>
+        <Route path="/" element={<ProfileInfo />} />
+        <Route path="/new-workout" element={<NewWorkout />} />
 
-
+      </Routes>
 
       <div className="Header">
         <div className="HeaderText">Back at it again.</div>
@@ -93,21 +101,6 @@ function App() {
       />
       <ProfileInfo />
       <Dictionary search={search} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts} />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </div>
   );

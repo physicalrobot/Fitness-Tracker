@@ -17,6 +17,10 @@
 
 }
 
+input[type="radio"]{
+  margin-left:10px;
+}
+
 .ProfileInfo{
 
     position: absolute;
@@ -158,6 +162,8 @@ font-size: large;
 background: linear-gradient(0deg, #169C9C, #169C9C);
 border-radius: 10px;
     }
+
+    /* Button that opens up add console */
     .AddNewWorkout{
         position: absolute;
 width: 143px;
@@ -170,6 +176,38 @@ background: linear-gradient(0deg, #332A7C, #332A7C);
 border-radius: 10px;
     }
 
+    /* adding the workout to the database */
+
+    .AddToCategory{
+      position:relative;
+      top:40px;
+      left:20%;
+      color:white;
+    }
+
+    .AddWorkoutButton{
+      position: absolute;
+      width: 143px;
+      height: 52px;
+      left: 17%;
+      color:white;
+      font-size: large;
+      background: linear-gradient(0deg, #332A7C, #332A7C);
+      border-radius: 10px;
+
+    }
+
+    .CancelAddWorkoutButton{
+      position: absolute;
+      width: 143px;
+      height: 52px;
+      left: 52%;
+      color:white;
+      font-size: large;
+      background: linear-gradient(0deg, #169C9C, #169C9C);
+      border-radius: 10px;
+
+    }
 
 
 
@@ -291,6 +329,59 @@ overflow-y: scroll ;
 scrollbar-base-color: blue;
 
 }
+
+/* New Workout Console */
+
+.NewWorkoutBackground{
+  position: absolute;
+width: 483px;
+height: 471px;
+left: 935px;
+top: 609px;
+
+background: #363635;
+/* shadow 1 */
+
+z-index: 1000;
+border-radius: 28px;
+}
+
+
+.AddWorkoutInputName{
+  position: relative;
+  top:30px;
+  left:40px;
+  width:400px;
+  height:50px;
+  border-radius: 15px;
+  background-color: #1c1c1ef6;
+  color:white;
+  font-size: large;
+
+}
+
+.AddWorkoutInputBody{
+
+  position: relative;
+  top:50px;
+  left:40px;
+  width:400px;
+  height:250px;
+  border-radius: 5px;
+  background-color: #1c1c1ef6;
+  color:white;
+  font-size: large;
+}
+
+.NewWorkoutButtons{
+  position: relative;
+  top:60px;
+
+}
+
+
+
+
 
 .listHeaders{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
