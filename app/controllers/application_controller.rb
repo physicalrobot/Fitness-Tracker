@@ -13,21 +13,25 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/workouts" do
-    workouts = Workout.create(body: params[:body], name: params[:name])
+    workouts = Workout.create(group: params[:group], body: params[:body], name: params[:name])
     workouts.to_json
   end
+
   
-  # patch "/messages/:id" do
-  #   message = Message.find(params[:id])
-  #   message.update(body: params[:body])
-  #   message.to_json
-  # end
+  patch "/workouts/:id" do
+    workout = Workout.find(params[:id])
+    workout.update(body: params[:body])
+    workout.to_json
+  end
   
   delete "/workouts/:id" do
     workout = Workout.find(params[:id])
     workout.destroy
     workout.to_json
   end
+
+
+
 
   get "/workouts/:group" do
     workout = Workout.where(group: params[:group])

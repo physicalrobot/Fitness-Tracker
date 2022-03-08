@@ -53,22 +53,19 @@ function App() {
   console.log(displayedWorkouts)
 
 
-  // function handleUpdateWorkout(updatedWorkoutObj) {
-  //   const updateWorkouts = workouts.map((workout) => {
-  //     if (workout.id === updatedWorkoutObj.id) {
-  //       return updatedWorkoutObj;
-  //     } else {
-  //       return workout;
-  //     }
-  //   });
-  //   setWorkouts(updateWorkouts);
-  // }
+  function handleUpdateWorkout(updatedWorkoutObj) {
+    const updateWorkouts = workouts.map((workout) => {
+      if (workout.id === updatedWorkoutObj.id) {
+        return updatedWorkoutObj;
+      } else {
+        return workout;
+      }
+    });
+    setWorkouts(updateWorkouts);
+  }
 
 
 
-  // const displayedWorkouts = workouts.filter((workout) =>
-  //   workout.body.toLowerCase().includes(search.toLowerCase())
-  // );
 
 
 
@@ -100,7 +97,7 @@ function App() {
       // workouts={displayedWorkouts} 
       />
       <ProfileInfo />
-      <Dictionary search={search} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts} />
+      <Dictionary search={search} onUpdateWorkout={handleUpdateWorkout} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts} />
 
     </div>
   );

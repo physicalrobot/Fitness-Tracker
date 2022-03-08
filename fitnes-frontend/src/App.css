@@ -189,7 +189,7 @@ border-radius: 10px;
       position: absolute;
       width: 143px;
       height: 52px;
-      left: 17%;
+      left: 28%;
       color:white;
       font-size: large;
       background: linear-gradient(0deg, #332A7C, #332A7C);
@@ -199,13 +199,14 @@ border-radius: 10px;
 
     .CancelAddWorkoutButton{
       position: absolute;
-      width: 143px;
-      height: 52px;
-      left: 52%;
+      width: 45px;
+      height: 45px;
+      left: 60%;
       color:white;
       font-size: large;
       background: linear-gradient(0deg, #169C9C, #169C9C);
       border-radius: 10px;
+      top:2px;
 
     }
 
@@ -405,6 +406,43 @@ z-index: 1000;
   top:30px;
 
 }
+
+
+
+.descriptiontextbox{
+  background: linear-gradient(0deg, #342a7c00, #332A7C); 
+  border-radius: 15px; 
+
+  height:100px;
+  width:1000px;
+  font-size: 20px;
+  color:white;
+}
+
+.edit-save{
+  position: absolute;
+  width: 143px;
+  height: 52px;
+  left:860px;
+  color:white;
+  font-size: large;
+  background: linear-gradient(0deg, #332A7C, #332A7C);
+  border-radius: 10px;
+
+}
+.editpencil{
+  position:relative;
+  background:transparent;
+  border-radius: 30px;
+  border:#332A7C;
+  color:white;
+  font-size: 18px;
+  left:8px;
+
+}
+
+
+
 
 .TodaysWorkoutList {
     overflow-y: auto;

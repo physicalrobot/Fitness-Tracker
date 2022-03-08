@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function InventoryConsole({ handleDeleteClick, workout, setGroupedworkouts, wkouts }) {
+import EditWorkout from './EditWorkout';
 
-    const { id, name, body } = workout
+function InventoryConsole({ handleDeleteClick, onUpdateWorkout, workout, setGroupedworkouts, wkouts }) {
+
+    const { id, name, body, group } = workout
+    const [isEditing, setIsEditing] = useState(false);
+
 
 
     function handleDelete() {
@@ -10,8 +14,12 @@ function InventoryConsole({ handleDeleteClick, workout, setGroupedworkouts, wkou
             method: "DELETE",
         });
         handleDeleteClick(id)
-        setGroupedworkouts(wkouts)
 
+    }
+
+    function handleUpdate(updatedWorkout) {
+        setIsEditing(false);
+        onUpdateWorkout(updatedWorkout);
     }
 
 
@@ -20,6 +28,7 @@ function InventoryConsole({ handleDeleteClick, workout, setGroupedworkouts, wkou
     return (
         <div className="ConsoleContent">
             <h2 className='listHeaders'>{name}
+
                 <button className='trashcan'
                     onClick={handleDelete}
                 >
@@ -27,10 +36,32 @@ function InventoryConsole({ handleDeleteClick, workout, setGroupedworkouts, wkou
                         🗑
                     </span>
                 </button>
+
+                <button className='editpencil'
+                    onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                    <span role="img" aria-label="edit">
+                        ✏️
+                    </span>
+                </button>
+
             </h2>
-            <li>
-                <p>{body}</p>
-            </li>
+
+
+            {isEditing ? (
+                <EditWorkout
+                    id={id}
+                    body={body}
+                    onUpdateWorkout={onUpdateWorkout}
+                />
+            ) : (
+
+                <li>
+                    <p>{body}</p>
+                </li>
+
+            )}
+
+
         </div>
     );
 }

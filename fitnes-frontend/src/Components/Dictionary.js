@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import InventoryConsole from './InventoryConsole';
 
 
-function Dictionary({ wkouts, search, onWorkoutDelete, setSearch, workouts, setWorkouts }) {
+function Dictionary({ wkouts, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts }) {
 
     const [groupedworkouts, setGroupedworkouts] = useState([workouts]);
 
@@ -159,6 +159,7 @@ function Dictionary({ wkouts, search, onWorkoutDelete, setSearch, workouts, setW
                             workout={workout}
                             handleDeleteClick={onWorkoutDelete}
                             setGroupedworkouts={setGroupedworkouts}
+                            onUpdateWorkout={onUpdateWorkout}
                         />
                     ))}
                 </ul>
