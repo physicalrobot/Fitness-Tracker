@@ -20,6 +20,7 @@ import '../App.css';
 
 function App() {
   const [date, setDate] = useState(new Date());
+  const [dates, setDates] = useState([])
   const [workouts, setWorkouts] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -40,6 +41,10 @@ function App() {
 
   function handleAddWorkout(newWorkout) {
     setWorkouts([...workouts, newWorkout]);
+  }
+
+  function handleAddDate(newDate) {
+    setDates([...dates, newDate]);
   }
 
   function handleDeleteWorkout(id) {
@@ -79,7 +84,7 @@ function App() {
       </header>
       <Routes>
         <Route path="/" element={<ProfileInfo />} />
-        <Route path="/new-workout" element={<NewWorkout handleAddWorkout={handleAddWorkout} />} />
+        <Route path="/new-workout" element={<NewWorkout handleAddWorkout={handleAddWorkout} date={date} />} />
 
       </Routes>
 
@@ -97,7 +102,7 @@ function App() {
       // workouts={displayedWorkouts} 
       />
       <ProfileInfo />
-      <Dictionary search={search} onUpdateWorkout={handleUpdateWorkout} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts} />
+      <Dictionary date={date} search={search} onUpdateWorkout={handleUpdateWorkout} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts} />
 
     </div>
   );

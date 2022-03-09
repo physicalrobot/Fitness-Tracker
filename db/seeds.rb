@@ -1,9 +1,30 @@
 puts "🌱 Seeding spices..."
 
 # Seed your database here
+
+
+Day.create([
+{name:"Monday"},  
+
+{name:"Tuesday"},
+
+{name:"Wednesday"},
+
+{name:"Thursday"},
+
+{name:"Friday"},
+
+{name:"Saturday"},
+
+{name:"Sunday"}
+])
+
+
+
+
 Workout.create([
     {
-      name: "pull-ups 👋",
+      name: "pull-ups",
       group:"arms",
       body:"A pull-up is an upper-body strength exercise. The pull-up is a closed-chain movement where the body is suspended by the hands and pulls up. As this happens, the elbows flex and the shoulders adduct and extend to bring the elbows to the torso.",
     },

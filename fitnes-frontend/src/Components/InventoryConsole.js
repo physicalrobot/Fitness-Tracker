@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import EditWorkout from './EditWorkout';
 
-function InventoryConsole({ handleDeleteClick, onUpdateWorkout, workout, setGroupedworkouts, wkouts }) {
+function InventoryConsole({ date, handleDeleteClick, onUpdateWorkout, workout, setGroupedworkouts, wkouts }) {
 
     const { id, name, body, group } = workout
     const [isEditing, setIsEditing] = useState(false);
@@ -13,6 +13,9 @@ function InventoryConsole({ handleDeleteClick, onUpdateWorkout, workout, setGrou
         fetch(`http://localhost:9292/workouts/${id}`, {
             method: "DELETE",
         });
+
+
+
         handleDeleteClick(id)
 
     }
@@ -43,7 +46,6 @@ function InventoryConsole({ handleDeleteClick, onUpdateWorkout, workout, setGrou
                         ✏️
                     </span>
                 </button>
-
             </h2>
 
 

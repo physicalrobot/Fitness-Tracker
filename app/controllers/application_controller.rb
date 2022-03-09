@@ -12,6 +12,18 @@ class ApplicationController < Sinatra::Base
 
   end
 
+  get "/days" do
+    days = Day.all.order(:created_at)
+    days.to_json
+
+  end
+
+  
+  post "/days" do
+    days = Day.create(name: params[:name])
+    days.to_json
+  end
+
   post "/workouts" do
     workouts = Workout.create(group: params[:group], body: params[:body], name: params[:name])
     workouts.to_json
@@ -29,7 +41,6 @@ class ApplicationController < Sinatra::Base
     workout.destroy
     workout.to_json
   end
-
 
 
 

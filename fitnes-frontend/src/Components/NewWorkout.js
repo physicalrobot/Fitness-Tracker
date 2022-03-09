@@ -1,21 +1,43 @@
 
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import moment from 'moment';
+
 import { RadioGroup, Radio } from 'react-radio-group'
 
 
 
-function NewWorkout({ handleAddWorkout }) {
+function NewWorkout({ date, handleAddWorkout, handleAddDate }) {
 
     const [workout, setWorkout] = useState({});
 
     const [name, setName] = useState('');
     const [body, setBody] = useState('');
     const [group, setGroup] = useState("");
+    const [currentDate, setCurrentDate] = useState("");
+
+
+    function handleDateCheck() {
+        setCurrentDate(moment(date).format('MMMM Do YYYY'))
 
 
 
+        fetch("http://localhost:9292/days", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: currentDate,
 
+            }),
+        })
+            .then((r) => r.json())
+            .then(dateData => {
+                handleAddDate(dateData)
+            })
+
+    }
 
 
 
@@ -38,11 +60,9 @@ function NewWorkout({ handleAddWorkout }) {
             .then((r) => r.json())
             .then(workoutData => {
                 handleAddWorkout(workoutData)
-                setName("")
-                setBody("")
-                setGroup("")
-
             })
+
+
 
     }
 
@@ -68,7 +88,12 @@ function NewWorkout({ handleAddWorkout }) {
                         onChange={(e) => setName(e.target.value)}
 
 
-                    ></input>
+                    ></input><br></br>
+                    <p
+                        className='addworkoutDate'>
+                        add to date: <b>{moment(date).format('MMMM Do YYYY')}</b> <input type='checkbox' onChange={handleDateCheck}></input>
+                    </p>
+
 
                     <div className='AddToCategory'>
 
@@ -97,7 +122,6 @@ function NewWorkout({ handleAddWorkout }) {
 
 
                     <div className='NewWorkoutButtons'>
-
                         <button type="submit" className="AddWorkoutButton" >Add<span></span>
                         </button>
 
