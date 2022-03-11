@@ -1,5 +1,6 @@
 ::-webkit-scrollbar{
   width:2em;
+  height: 100%;
 
 }
 
@@ -212,7 +213,14 @@ border-radius: 10px;
 
     }
 
+/*adding workout to day*/
+.addworkoutDateDictionary{
+  color:turquoise;
+  position:relative;
+  top:-10px;
+  margin:0;
 
+}
 
 .Calendar{
 position: absolute;
@@ -450,6 +458,17 @@ z-index: 1000;
   color:white;
   font-size: 18px;
   left:8px;
+
+}
+
+.addtocalendar{
+  position:relative;
+  background:transparent;
+  border-radius: 30px;
+  border:#332A7C;
+  color:white;
+  font-size: 18px;
+  left:6px;
 
 }
 

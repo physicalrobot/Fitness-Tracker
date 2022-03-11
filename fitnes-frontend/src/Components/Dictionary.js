@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import moment from 'moment';
+
 
 import InventoryConsole from './InventoryConsole';
 
 
-function Dictionary({ date, wkouts, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts }) {
+function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, handleAddRoutine }) {
 
     const [groupedworkouts, setGroupedworkouts] = useState([workouts]);
+
 
     function WorkoutSearch(e) {
 
         setSearch(e.target.value)
     }
+
+
 
 
 
@@ -55,6 +60,61 @@ function Dictionary({ date, wkouts, search, onUpdateWorkout, onWorkoutDelete, se
             .then((workouts) => setWorkouts(workouts))
     };
 
+
+
+
+    // const [index, setIndex] = useState();
+
+
+    // function IndexSetter() {
+    //     setCurrentDate(moment(date).format('MMMM Do YYYY'))
+    //     setIndex(dates.map(function (e) { return e.name; }).indexOf(currentDate) + 1);
+
+
+    // }
+
+    // const [currentDate, setCurrentDate] = useState("");
+
+
+
+
+    // function postRoutine() {
+    //     setCurrentDate(moment(date).format('MMMM Do YYYY'))
+    //     var index = (dates.map(function (e) { return e.name; }).indexOf(currentDate) + 1);
+
+    //     //getting a value behind the updated value for some reason. 
+    //     console.log(currentDate)
+    //     console.log(index)
+
+
+    //     if (dates.find(function (post, index) {
+    //         if (post.name == currentDate)
+    //             return true;
+    //     }
+
+    //     )) {
+
+
+    //         fetch("http://localhost:9292/routines", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({
+    //                 day_id: index,
+
+    //             }),
+    //         })
+    //             .then((r) => r.json())
+    //             .then(day => handleAddRoutine(day))
+    //     }
+    //     else {
+    //         console.log("the routine doesn't exist");
+
+
+    //     }
+
+    // }
 
 
 
@@ -141,23 +201,30 @@ function Dictionary({ date, wkouts, search, onUpdateWorkout, onWorkoutDelete, se
 
 
 
+
+
+
+
             </div>
 
             <div className='InventoryOutput'>
 
-
-
                 <ul>
                     {workouts.map((workout) => (
                         <InventoryConsole
+                            dates={dates}
                             date={date}
                             key={workout.id}
                             workout={workout}
                             handleDeleteClick={onWorkoutDelete}
                             setGroupedworkouts={setGroupedworkouts}
                             onUpdateWorkout={onUpdateWorkout}
+                            handleAddDate={handleAddDate}
+                            handleAddRoutine={handleAddRoutine}
+                        // postRoutine={postRoutine}
                         />
                     ))}
+
                 </ul>
 
 
@@ -168,5 +235,5 @@ function Dictionary({ date, wkouts, search, onUpdateWorkout, onWorkoutDelete, se
 
 
     )
-};
+}
 export default Dictionary;

@@ -7,7 +7,7 @@ import { RadioGroup, Radio } from 'react-radio-group'
 
 
 
-function NewWorkout({ date, handleAddWorkout, handleAddDate }) {
+function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
 
     const [workout, setWorkout] = useState({});
 
@@ -15,34 +15,61 @@ function NewWorkout({ date, handleAddWorkout, handleAddDate }) {
     const [body, setBody] = useState('');
     const [group, setGroup] = useState("");
     const [currentDate, setCurrentDate] = useState("");
+    const [checked, setChecked] = useState(false);
+
+    function onDateCheckbox() {
+        setCurrentDate(date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }))
+        setChecked(!checked)
+
+    }
 
 
     function handleDateCheck() {
-        setCurrentDate(moment(date).format('MMMM Do YYYY'))
 
+        if (dates.find(function (post, index) {
+            if (post.name == currentDate)
+                return true;
+        }
 
+        )) {
+            return (console.log('hello'));
+        }
+        else {
 
-        fetch("http://localhost:9292/days", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: currentDate,
+            // handleAddDate(dateData)
+            fetch("http://localhost:9292/days", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: currentDate,
 
-            }),
-        })
-            .then((r) => r.json())
-            .then(dateData => {
-                handleAddDate(dateData)
+                }),
             })
+                .then((r) => r.json())
+                .then(dateData => handleAddDate(dateData))
 
+        }
+
+
+        // if (dates.includes(dateData.name)) {
+        //     console.log('hello')
+        // }
+        // else {
+
+        //     handleAddDate(dateData)
+
+        // }
     }
+
+
 
 
 
     function handleSubmit(e) {
         e.preventDefault();
+
 
 
         // fetches data and sets it to
@@ -61,8 +88,7 @@ function NewWorkout({ date, handleAddWorkout, handleAddDate }) {
             .then(workoutData => {
                 handleAddWorkout(workoutData)
             })
-
-
+            .then(checked ? handleDateCheck : console.log('not save in day'))
 
     }
 
@@ -91,7 +117,7 @@ function NewWorkout({ date, handleAddWorkout, handleAddDate }) {
                     ></input><br></br>
                     <p
                         className='addworkoutDate'>
-                        add to date: <b>{moment(date).format('MMMM Do YYYY')}</b> <input type='checkbox' onChange={handleDateCheck}></input>
+                        add to date: <b>{moment(date).format('MMMM Do YYYY')}</b> <input type='checkbox' onClick={onDateCheckbox} defaultChecked={checked}></input>
                     </p>
 
 

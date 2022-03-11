@@ -23,6 +23,15 @@ function App() {
   const [dates, setDates] = useState([])
   const [workouts, setWorkouts] = useState([]);
   const [search, setSearch] = useState("");
+  const [routines, setRoutines] = useState([])
+
+
+  function handleAddRoutine(newRoutine) {
+    setRoutines([...routines, newRoutine]);
+
+  }
+
+
 
 
 
@@ -31,13 +40,19 @@ function App() {
   }
 
 
+
   //adding the database
   useEffect(() => {
     fetch("http://localhost:9292/workouts")
       .then((r) => r.json())
       .then((workouts) => setWorkouts(workouts));
+
+    fetch("http://localhost:9292/days")
+      .then((r) => r.json())
+      .then((dates) => setDates(dates))
+
+
   }, []);
-  console.log(workouts)
 
   function handleAddWorkout(newWorkout) {
     setWorkouts([...workouts, newWorkout]);
@@ -55,7 +70,6 @@ function App() {
   const displayedWorkouts = workouts.filter((workout) =>
     workout.name.toLowerCase().includes(search.toLowerCase())
   )
-  console.log(displayedWorkouts)
 
 
   function handleUpdateWorkout(updatedWorkoutObj) {
@@ -77,6 +91,9 @@ function App() {
 
 
 
+
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -84,7 +101,7 @@ function App() {
       </header>
       <Routes>
         <Route path="/" element={<ProfileInfo />} />
-        <Route path="/new-workout" element={<NewWorkout handleAddWorkout={handleAddWorkout} date={date} />} />
+        <Route path="/new-workout" element={<NewWorkout handleAddWorkout={handleAddWorkout} handleAddDate={handleAddDate} date={date} dates={dates} />} />
 
       </Routes>
 
@@ -102,7 +119,13 @@ function App() {
       // workouts={displayedWorkouts} 
       />
       <ProfileInfo />
-      <Dictionary date={date} search={search} onUpdateWorkout={handleUpdateWorkout} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts} />
+      <Dictionary dates={dates} date={date} setDates={setDates} search={search} handleAddDate={handleAddDate} onUpdateWorkout={handleUpdateWorkout} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts} handleAddRoutine={handleAddRoutine}
+
+      // setCurrentDate={setCurrentDate} 
+      // currentDate={currentDate} 
+
+
+      />
 
     </div>
   );

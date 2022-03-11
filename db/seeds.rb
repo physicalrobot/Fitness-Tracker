@@ -14,9 +14,11 @@ Day.create([
 
 {name:"Friday"},
 
-{name:"Saturday"},
+{name:"Saturday",
+},
 
-{name:"Sunday"}
+{name:"Sunday",
+}
 ])
 
 

@@ -6,6 +6,12 @@ class ApplicationController < Sinatra::Base
     { message: "Good luck with your project!" }.to_json
   end
 
+
+  get "/routines" do
+    routines = Routine.all.order(:id)
+    routines.to_json
+  end
+
   get "/workouts" do
     workouts = Workout.all.order(:created_at)
     workouts.to_json
@@ -16,6 +22,11 @@ class ApplicationController < Sinatra::Base
     days = Day.all.order(:created_at)
     days.to_json
 
+  end
+
+  get "/day-workout" do
+    days = Day.routines
+    days.to_json
   end
 
   
@@ -29,6 +40,15 @@ class ApplicationController < Sinatra::Base
     workouts.to_json
   end
 
+  post "/routines" do
+    routines = Routine.create(day_id: params[:day_id], workout_id: params[:workout_id] )
+    routines.to_json
+  end
+  patch "/routines" do
+    routines = Routine.find(day_id: params[:day_id], workout_id: params[:workout_id] )
+    routines.update(day_id: params[:day_id], workout_id: params[:workout_id])
+    routines.to_json
+  end
   
   patch "/workouts/:id" do
     workout = Workout.find(params[:id])
