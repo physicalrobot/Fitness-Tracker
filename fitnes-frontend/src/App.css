@@ -270,6 +270,10 @@ font-family: 'Lobster', cursive;
     font-size:15px;
 }
 
+.thelistofworkoutsintoday{
+height:0px;
+
+}
 .WorkoutDate{
 position:relative;
 text-align:center;

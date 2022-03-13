@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 import InventoryConsole from './InventoryConsole';
 
 
-function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, handleAddRoutine }) {
+function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, handleAddRoutine, handleupdateRoutine }) {
 
     const [groupedworkouts, setGroupedworkouts] = useState([workouts]);
 
@@ -209,7 +211,7 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
 
             <div className='InventoryOutput'>
 
-                <ul>
+                <ul key={uuidv4()}>
                     {workouts.map((workout) => (
                         <InventoryConsole
                             dates={dates}
@@ -221,6 +223,7 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
                             onUpdateWorkout={onUpdateWorkout}
                             handleAddDate={handleAddDate}
                             handleAddRoutine={handleAddRoutine}
+                            handleupdateRoutine={handleupdateRoutine}
                         // postRoutine={postRoutine}
                         />
                     ))}

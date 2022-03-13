@@ -3,14 +3,15 @@ import React, { useState } from 'react';
 import EditWorkout from './EditWorkout';
 import Routine from './Routine';
 import moment from 'moment';
+import TodayWorkout from './TodayWorkout';
 
-function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpdateWorkout, workout, setGroupedworkouts, wkouts, handleAddRoutine }) {
+function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpdateWorkout, workout, setGroupedworkouts, wkouts, handleAddRoutine, catagorizedworkouts }) {
 
     const { id, name, body, group } = workout
     const [isEditing, setIsEditing] = useState(false);
     const [calendarSelect, setcalendarSelect] = useState(false);
-    const [routines, setRoutines] = useState([])
-    const [currentDate, setCurrentDate] = useState(date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }));
+    const [routines, setRoutines] = useState()
+    const [currentDate, setCurrentDate] = useState("");
     const [checked, setChecked] = useState(false);
 
 
@@ -33,40 +34,12 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
     }
 
 
-    // setCurrentDate(moment(date).format('MMMM Do YYYY'))
-    // var index = dates.map(function (e) { return e.name; }).indexOf(currentDate);
-    // const dayid = index + 1;
-
-
-
-    // function handleAddRoutine(newRoutine) {
-    //     setRoutines([...routines, newRoutine]);
-    // }
-
-    // function postRoutine() {
-
-
-    //     fetch("http://localhost:9292/routines", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             day_id: dayid,
-
-    //         }),
-    //     })
-    //         .then((r) => r.json())
-    //         .then(day => handleAddRoutine(day))
-
-
-
-
-    // }2
 
     function handleDateCheck() {
+        var rightnowdate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
+
         if (dates.find(function (post, index) {
-            if (post.name == currentDate)
+            if (post.name == rightnowdate)
                 return true;
         }
 
@@ -75,34 +48,38 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
         }
         else {
 
-            // handleAddDate(dateData)
             fetch("http://localhost:9292/days", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    name: currentDate,
+                    name: rightnowdate,
 
                 }),
             })
                 .then((r) => r.json())
                 .then(dateData => handleAddDate(dateData))
-
         }
     }
 
-    function onDateCheckbox() {
+
+    function onDateCheckbox(e) {
         setCurrentDate(date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }))
-        setChecked(!checked)
         handleDateCheck()
+        console.log(e.target.checked)
+        setChecked(!checked)
 
 
 
     }
 
 
-    function postRoutine() {
+
+    function postRoutine(e) {
+        // e.preventDefault()
+
+
         // setCurrentDate(date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }))
         var dayindex = (dates.map(function (e) { return e.name; }).indexOf(currentDate) + 1);
 
@@ -110,15 +87,7 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
 
         console.log(workout)
 
-        //getting a value behind the updated value for some reason. 
-        // console.log(date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }) // "Jul 2021 Friday"
-        // )
         setChecked(!checked)
-
-        console.log(currentDate)
-        console.log(dayindex)
-
-
 
 
 
@@ -145,29 +114,18 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
             })
                 .then((r) => r.json())
                 .then(day => handleAddRoutine(day))
-            ///////////////////////////////////////////////////////////////////////////////////
-            //make an object in day with the name:currentDate then run the loop again to add the routine....
 
-            // fetch("http://localhost:9292/days", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({
-            //         name: currentDate,
-
-            //     }),
-            // })
-            //     .then((r) => r.json())
-            //     .then(dateData => handleAddDate(dateData))
-
-            ///////////////////////////////////////////////////////////////////////////////////
 
         }
         else {
             console.log("the routine doesn't exist");
 
         }
+
+
+
+        console.log(currentDate)
+        console.log(dayindex)
 
     }
 
@@ -200,15 +158,15 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
                     </span>
                 </button>
 
-
-                <button className='addtocalendar'
-                    onClick={postRoutine}
+                <button className='addtocalendar' onClick={postRoutine}
                 >
                     <span >
                         📅
                     </span>
                 </button>
+
             </h2>
+
             <p
                 className='addworkoutDateDictionary'>
                 add to date: <b>{moment(date).format('MMMM Do YYYY')}</b> <input type='checkbox' onChange={onDateCheckbox} checked={checked}></input>

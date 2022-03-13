@@ -6,6 +6,14 @@ class ApplicationController < Sinatra::Base
     { message: "Good luck with your project!" }.to_json
   end
 
+  # get "/day-workout" do
+
+  #   @days = Day.all
+
+  #   render json: @days, include: [{ routines: { include: [:workout], except: [:workout_id, :day_id] }}]
+    
+  # end 
+
 
   get "/routines" do
     routines = Routine.all.order(:id)
@@ -19,14 +27,22 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/days" do
+
     days = Day.all.order(:created_at)
     days.to_json
+
+
 
   end
 
   get "/day-workout" do
-    days = Day.routines
-    days.to_json
+
+      @days = Day.all
+      @days.to_json ({include: [{ routines: { include: [:workout], except: [:workout_id, :day_id] }
+
+    }]})
+
+
   end
 
   
@@ -61,8 +77,6 @@ class ApplicationController < Sinatra::Base
     workout.destroy
     workout.to_json
   end
-
-
 
   get "/workouts/:group" do
     workout = Workout.where(group: params[:group])

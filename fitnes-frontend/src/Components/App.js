@@ -24,6 +24,10 @@ function App() {
   const [workouts, setWorkouts] = useState([]);
   const [search, setSearch] = useState("");
   const [routines, setRoutines] = useState([])
+  const [catagorizedworkouts, setCatagorizedWorkouts] = useState([])
+  // const [routineWorkouts, setRoutineWorkouts] = useState()
+
+  const [workoutsdisplayed, setWorkoutsDisplayed] = useState([])
 
 
   function handleAddRoutine(newRoutine) {
@@ -34,9 +38,10 @@ function App() {
 
 
 
-
   const changeDate = (e) => {
+
     setDate(e)
+
   }
 
 
@@ -51,8 +56,22 @@ function App() {
       .then((r) => r.json())
       .then((dates) => setDates(dates))
 
+    fetch("http://localhost:9292/day-workout")
+      .then((r) => r.json())
+      .then((wrk) => setCatagorizedWorkouts(wrk))
+
+
+
 
   }, []);
+
+
+
+  function handleWorkoutDisplayed(newWorkout) {
+    setWorkoutsDisplayed([newWorkout]);
+  }
+
+
 
   function handleAddWorkout(newWorkout) {
     setWorkouts([...workouts, newWorkout]);
@@ -60,6 +79,11 @@ function App() {
 
   function handleAddDate(newDate) {
     setDates([...dates, newDate]);
+  }
+
+  function handleDeleteRoutine(id) {
+    const updateRoutine = catagorizedworkouts.filter((routines) => routines.id !== id);
+    setCatagorizedWorkouts(updateRoutine);
   }
 
   function handleDeleteWorkout(id) {
@@ -82,6 +106,48 @@ function App() {
     });
     setWorkouts(updateWorkouts);
   }
+
+
+
+  // setting the state in a parent component isn't working for some reason 
+  // function listwrkout() {
+
+
+  //   var wrkoutdate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
+  //   if (catagorizedworkouts.find(function (post, index) {
+  //     if (post.name == wrkoutdate)
+  //       return true;
+  //   }
+
+  //   )) {
+  //     var obj = catagorizedworkouts.find(o => o.name === date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }));
+
+  //     let closer = obj.routines;
+  //     let cloyster = closer.filter(o => o.workout);
+  //     // let cloyster = closer.workout
+
+  //     var nameArray = cloyster.map(function (el) { return el.workout; });
+
+  //     let wrkouttwrk = nameArray.map(function (el) { return el.name; });
+
+  //     // console.log(obj)
+  //     // console.log(wrkouttwrk)
+  //     return (wrkouttwrk);
+  //     console.log(wrkouttwrk)
+
+  //   }
+
+  //   else {
+  //     console.log('no workouts')
+  //   }
+  // }
+
+
+  // function handleupdateRoutine() {
+
+  //   setRoutineWorkouts(listwrkout())
+  // }
+
 
 
 
@@ -116,10 +182,16 @@ function App() {
       <TodayWorkout date={date}
         workouts={workouts}
         onWorkoutDelete={handleDeleteWorkout}
+        catagorizedworkouts={catagorizedworkouts}
+        handleWorkoutDisplayed={handleWorkoutDisplayed}
+      // routineworkouts={routineWorkouts}
+      // handleDeleteRoutine={handleDeleteRoutine}
       // workouts={displayedWorkouts} 
       />
       <ProfileInfo />
       <Dictionary dates={dates} date={date} setDates={setDates} search={search} handleAddDate={handleAddDate} onUpdateWorkout={handleUpdateWorkout} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts} handleAddRoutine={handleAddRoutine}
+        catagorizedworkouts={catagorizedworkouts}
+      // handleupdateRoutine={handleupdateRoutine}
 
       // setCurrentDate={setCurrentDate} 
       // currentDate={currentDate} 

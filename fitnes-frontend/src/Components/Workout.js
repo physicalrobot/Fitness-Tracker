@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 
-function Workout({ workout, onWorkoutDelete }) {
+function Workout({ workout }) {
     const [isEditing, setIsEditing] = useState(false);
     const [workoutDay, setWorkoutDay] = useState();
 
 
-    const { id, name, body, created_at: createdAt } = workout
 
 
-    function handleDeleteClick() {
-        fetch(`http://localhost:9292/workouts/${id}`, {
-            method: "DELETE",
+    // function handleDeleteClick() {
+    //     fetch(`http://localhost:9292/workouts/${id}`, {
+    //         method: "DELETE",
 
-        });
+    //     });
 
-        onWorkoutDelete(id);
-    }
+    //     onWorkoutDelete(id);
+    // }
 
 
 
@@ -25,17 +24,29 @@ function Workout({ workout, onWorkoutDelete }) {
 
 
     return (
-        <li>
-            <p>{name}</p>
-            <div className="actions">
+        // <li>
+        //     <p>{name}</p>
+        //     <div className="actions">
 
-                <button onClick={handleDeleteClick}>
-                    <span role="img" aria-label="delete">
-                        🗑
-                    </span>
-                </button>
-            </div>
+        //         <button onClick={handleDeleteClick}>
+        //             <span role="img" aria-label="delete">
+        //                 🗑
+        //             </span>
+        //         </button>
+        //     </div>
+        // </li>
+        <li  >
+            <p className='thelistofworkoutsintoday'>{workout}
+
+                {/* <button className='trashcan' onClick={handleDeleteRoutine}>
+                     <span role="img" aria-label="delete">
+                          🗑
+                     </span>
+                </button> */}
+
+            </p>
         </li>
+
     )
 
 }
