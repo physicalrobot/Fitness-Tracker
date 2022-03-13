@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import InventoryConsole from './InventoryConsole';
 
 
-function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, handleAddRoutine, handleupdateRoutine }) {
+function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, handleAddRoutine, handleupdateRoutine, count, setCounter, listwrkout, workoutonday }) {
 
     const [groupedworkouts, setGroupedworkouts] = useState([workouts]);
 
@@ -210,6 +210,7 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
             </div>
 
             <div className='InventoryOutput'>
+                <h1>{count}</h1>
 
                 <ul key={uuidv4()}>
                     {workouts.map((workout) => (
@@ -224,6 +225,11 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
                             handleAddDate={handleAddDate}
                             handleAddRoutine={handleAddRoutine}
                             handleupdateRoutine={handleupdateRoutine}
+                            count={count}
+                            setCounter={setCounter}
+
+
+                            listwrkout={listwrkout}
                         // postRoutine={postRoutine}
                         />
                     ))}

@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import Center from 'react-center';
 
 import './index.css';
 import App from './Components/App';

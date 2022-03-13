@@ -5,7 +5,9 @@ import Routine from './Routine';
 import moment from 'moment';
 import TodayWorkout from './TodayWorkout';
 
-function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpdateWorkout, workout, setGroupedworkouts, wkouts, handleAddRoutine, catagorizedworkouts }) {
+function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpdateWorkout, workout, setGroupedworkouts, wkouts, handleAddRoutine, catagorizedworkouts, count, setCounter, listwrkout }
+) {
+
 
     const { id, name, body, group } = workout
     const [isEditing, setIsEditing] = useState(false);
@@ -69,9 +71,6 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
         handleDateCheck()
         console.log(e.target.checked)
         setChecked(!checked)
-
-
-
     }
 
 
@@ -84,6 +83,7 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
         var dayindex = (dates.map(function (e) { return e.name; }).indexOf(currentDate) + 1);
 
         var workoutindex = workout.id
+
 
         console.log(workout)
 
@@ -115,13 +115,15 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
                 .then((r) => r.json())
                 .then(day => handleAddRoutine(day))
 
+            setCounter(workoutindex)
+
+
 
         }
         else {
             console.log("the routine doesn't exist");
 
         }
-
 
 
         console.log(currentDate)
@@ -171,6 +173,10 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
                 className='addworkoutDateDictionary'>
                 add to date: <b>{moment(date).format('MMMM Do YYYY')}</b> <input type='checkbox' onChange={onDateCheckbox} checked={checked}></input>
             </p>
+
+            <div>
+                <p>{count}</p>
+            </div>
 
 
 
