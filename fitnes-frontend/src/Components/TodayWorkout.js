@@ -21,6 +21,8 @@ function TodayWorkout({ date, workouts, onWorkoutDelete, catagorizedworkouts, se
 
 
     // filters the join table for the names of the workouts associated with the specific day//
+
+    //catagorizedworkouts needs to update without refreshing for routineworkouts to output the right thing... 
     function listwrkout() {
 
 
@@ -52,8 +54,9 @@ function TodayWorkout({ date, workouts, onWorkoutDelete, catagorizedworkouts, se
     }
     var routineworkouts = listwrkout()
 
-    //all the workouts saved to the day
+    //all the workouts saved to the day - this array is only updated on refresh, but i need it to update when i click the calendar button in InventoryConsole 
     console.log(routineworkouts)
+
 
 
     //the currently selected workouts 
