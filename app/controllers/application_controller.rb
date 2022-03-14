@@ -38,12 +38,26 @@ class ApplicationController < Sinatra::Base
   get "/day-workout" do
 
       @days = Day.all
-      @days.to_json ({include: [{ routines: { include: [:workout], except: [:workout_id, :day_id] }
+  #  @days.each do |item|
+  #     json =  item.workout
+  #  end 
+      @days.to_json ({include: [{ routines: { include: [:workout], except: [:workout_id, :day_id, :created_at, :updated_at] }
 
     }]})
 
-
   end
+
+
+
+  post "/day-workout" do
+
+    days = Day.create(name: params[:name])
+#  @days.each do |item|
+#     json =  item.workout
+#  end 
+days.to_json
+
+end
 
   
   post "/days" do

@@ -8,9 +8,13 @@ import { v4 as uuidv4 } from 'uuid';
 import InventoryConsole from './InventoryConsole';
 
 
-function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, handleAddRoutine, handleupdateRoutine, count, setCounter, listwrkout, workoutonday }) {
+function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, count, setCounter, workoutonday, postRoutine, handleRoutineWorkout, workwork, setWorkoutOnDay, catagorizedworkouts, setCatagorizedWorkouts, handleAddCategory }) {
 
     const [groupedworkouts, setGroupedworkouts] = useState([workouts]);
+
+
+
+
 
 
     function WorkoutSearch(e) {
@@ -210,7 +214,6 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
             </div>
 
             <div className='InventoryOutput'>
-                <h1>{count}</h1>
 
                 <ul key={uuidv4()}>
                     {workouts.map((workout) => (
@@ -223,14 +226,20 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
                             setGroupedworkouts={setGroupedworkouts}
                             onUpdateWorkout={onUpdateWorkout}
                             handleAddDate={handleAddDate}
-                            handleAddRoutine={handleAddRoutine}
-                            handleupdateRoutine={handleupdateRoutine}
                             count={count}
                             setCounter={setCounter}
 
+                            catagorizedworkouts={catagorizedworkouts}
+                            setWorkoutOnDay={setWorkoutOnDay}
+                            workoutonday={workoutonday}
+                            workwork={workwork}
 
-                            listwrkout={listwrkout}
-                        // postRoutine={postRoutine}
+                            setCatagorizedWorkouts={setCatagorizedWorkouts}
+                            handleRoutineWorkout={handleRoutineWorkout}
+                            handleAddCategory={handleAddCategory}
+
+
+                            postRoutine={postRoutine}
                         />
                     ))}
 

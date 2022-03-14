@@ -1,24 +1,44 @@
 import React, { useState } from 'react';
 
 import EditWorkout from './EditWorkout';
-import Routine from './Routine';
 import moment from 'moment';
 import TodayWorkout from './TodayWorkout';
 
-function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpdateWorkout, workout, setGroupedworkouts, wkouts, handleAddRoutine, catagorizedworkouts, count, setCounter, listwrkout }
-) {
+function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpdateWorkout, workout, setGroupedworkouts, wkouts, handleAddRoutine, count, setCounter,
+    workoutonday,
+    workwork,
+    setWorkoutOnDay,
+    catagorizedworkouts,
+    setCatagorizedWorkouts,
+    handleRoutineWorkout,
+    handleAddCategory,
+    // listwrkout, 
+    postRoutine
+    // onDateCheckbox, 
+    // checked 
+}
 
+
+) {
 
     const { id, name, body, group } = workout
     const [isEditing, setIsEditing] = useState(false);
     const [calendarSelect, setcalendarSelect] = useState(false);
-    const [routines, setRoutines] = useState()
     const [currentDate, setCurrentDate] = useState("");
     const [checked, setChecked] = useState(false);
 
 
 
+    const [workroutines, setWorkroutines] = useState([])
 
+
+
+
+
+
+    function addworkRoutine(count) {
+        setWorkroutines([...workroutines, count])
+    }
 
 
 
@@ -35,10 +55,10 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
         onUpdateWorkout(updatedWorkout);
     }
 
+    var rightnowdate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
 
-
+    //just moved all this to app.js ////////////////////////////////////////////////////////////////////////////////
     function handleDateCheck() {
-        var rightnowdate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
 
         if (dates.find(function (post, index) {
             if (post.name == rightnowdate)
@@ -62,21 +82,65 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
             })
                 .then((r) => r.json())
                 .then(dateData => handleAddDate(dateData))
+
         }
+
+
     }
 
 
     function onDateCheckbox(e) {
         setCurrentDate(date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }))
         handleDateCheck()
-        console.log(e.target.checked)
+        // console.log(e.target.checked)
         setChecked(!checked)
     }
 
+    function handleAddRoutine(stuff) {
+        setCatagorizedWorkouts([...catagorizedworkouts, stuff])
+        console.log(catagorizedworkouts)
+    }
+
+    function listwrkout() {
 
 
-    function postRoutine(e) {
+
+
+        var wrkoutdate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
+        if (catagorizedworkouts.find(function (post, index) {
+            if (post.name == wrkoutdate)
+                return true;
+        }
+
+        )) {
+            var obj = catagorizedworkouts.find(o => o.name === date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }));
+
+            let closer = obj.routines;
+            let cloyster = closer.filter(o => o.workout);
+            // let cloyster = closer.workout
+
+            var nameArray = cloyster.map(function (el) { return el.workout; });
+
+            let wrkouttwrk = nameArray.map(function (el) { return el.name; });
+
+            // console.log(obj)
+            // console.log(wrkouttwrk)
+            setWorkroutines(wrkouttwrk)
+            return (wrkouttwrk);
+
+        }
+
+        else {
+            console.log('no workouts')
+        }
+
+
+    }
+
+
+    function postRoutine() {
         // e.preventDefault()
+
 
 
         // setCurrentDate(date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }))
@@ -92,9 +156,9 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
 
 
         //you can replace currentDate witht this? 
-        // date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
+        var rndate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
         if (dates.find(function (post, index) {
-            if (post.name == currentDate)
+            if (post.name == rndate)
                 return true;
         }
 
@@ -107,33 +171,39 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
                 },
                 body: JSON.stringify({
                     day_id: dayindex,
-                    workout_id: workoutindex
+                    workout_id: workoutindex,
+                    name: rndate
 
 
                 }),
             })
                 .then((r) => r.json())
-                .then(day => handleAddRoutine(day))
 
-            setCounter(workoutindex)
+                .then(setCounter(workout.name))
+
+
+
+
 
 
 
         }
         else {
             console.log("the routine doesn't exist");
-
         }
 
 
-        console.log(currentDate)
-        console.log(dayindex)
+        // console.log(currentDate)
+        // console.log(dayindex)
+        setWorkroutines(listwrkout())
+
+        console.log(workroutines)
 
     }
 
 
 
-
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -174,18 +244,10 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
                 add to date: <b>{moment(date).format('MMMM Do YYYY')}</b> <input type='checkbox' onChange={onDateCheckbox} checked={checked}></input>
             </p>
 
-            <div>
-                <p>{count}</p>
-            </div>
 
 
 
-            {/* <Routine date={date} dates={dates} handleAddDate={handleAddDate} handleAddRoutine={handleAddRoutine} /> */}
 
-
-            {/* {calendarSelect ? (
-                    <Routine date={date} dates={dates} handleAddDate={handleAddDate} handleAddRoutine={handleAddRoutine} />
-                ) : console.log('no routine added')} */}
 
 
             {isEditing ? (

@@ -6,7 +6,6 @@ import { Routes, Route } from 'react-router-dom';
 import powerup from './pictures/goku-saiyan.gif'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import moment from 'moment';
 
 import TodayWorkout from './TodayWorkout';
 import ProfileInfo from './ProfileInfo';
@@ -23,74 +22,76 @@ function App() {
   const [dates, setDates] = useState([])
   const [workouts, setWorkouts] = useState([]);
   const [search, setSearch] = useState("");
-  const [routines, setRoutines] = useState([])
-  const [catagorizedworkouts, setCatagorizedWorkouts] = useState([])
+  // const [routines, setRoutines] = useState([])
+  const [catagorizedworkouts, setCatagorizedWorkouts] = useState()
 
 
   const [workoutonday, setWorkoutOnDay] = useState()
 
 
-  const [count, setCounter] = useState(0)
+  const [count, setCounter] = useState([])
 
 
+  const [currentDate, setCurrentDate] = useState("");
+  const [checked, setChecked] = useState(false);
+
+
+
+  function addtoCount(stuff) {
+    setCounter([...count, stuff])
+  }
   ///////////////////////////////////////////////////////////
 
 
-  function listwrkout() {
+  function handleAddCategory(stuff) {
+    setCatagorizedWorkouts([...catagorizedworkouts, stuff])
+    console.log(catagorizedworkouts)
 
 
-    var wrkoutdate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
-    if (catagorizedworkouts.find(function (post, index) {
-      if (post.name == wrkoutdate)
-        return true;
-    }
-
-    )) {
-      var obj = catagorizedworkouts.find(o => o.name === date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }));
-
-      let closer = obj.routines;
-      let cloyster = closer.filter(o => o.workout);
-      // let cloyster = closer.workout
-
-      var nameArray = cloyster.map(function (el) { return el.workout; });
-
-      let wrkouttwrk = nameArray.map(function (el) { return el.name; });
-
-      // console.log(obj)
-      // console.log(wrkouttwrk)
-      setWorkoutOnDay(wrkouttwrk)
-
-      return (wrkouttwrk);
-
-
-    }
-
-    else {
-      console.log('no workouts')
-    }
   }
-
-
 
   ////////////////////////////////////////////////////////////
 
   const [workoutsdisplayed, setWorkoutsDisplayed] = useState([])
 
 
-  function handleAddRoutine(newRoutine) {
-    setRoutines([...routines, newRoutine]);
-
-
-  }
 
 
 
 
   const changeDate = (e) => {
-
     setDate(e)
-
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -107,9 +108,6 @@ function App() {
     fetch("http://localhost:9292/day-workout")
       .then((r) => r.json())
       .then((wrk) => setCatagorizedWorkouts(wrk))
-
-
-
 
   }, []);
 
@@ -130,10 +128,7 @@ function App() {
     setDates([...dates, newDate]);
   }
 
-  function handleDeleteRoutine(id) {
-    const updateRoutine = catagorizedworkouts.filter((routines) => routines.id !== id);
-    setCatagorizedWorkouts(updateRoutine);
-  }
+
 
   function handleDeleteWorkout(id) {
     const updatedWorkouts = workouts.filter((workout) => workout.id !== id);
@@ -234,14 +229,20 @@ function App() {
         catagorizedworkouts={catagorizedworkouts}
         handleWorkoutDisplayed={handleWorkoutDisplayed}
         workoutonday={workoutonday}
+        setWorkoutOnDay={setWorkoutOnDay}
+        count={count}
 
-      // routineworkouts={routineWorkouts}
-      // handleDeleteRoutine={handleDeleteRoutine}
-      // workouts={displayedWorkouts} 
+
+
       />
       <ProfileInfo />
-      <Dictionary dates={dates} date={date} setDates={setDates} search={search} handleAddDate={handleAddDate} onUpdateWorkout={handleUpdateWorkout} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts} handleAddRoutine={handleAddRoutine}
-        catagorizedworkouts={catagorizedworkouts} count={count} setCounter={setCounter} listwrkout={listwrkout} workoutonday={workoutonday}
+      <Dictionary dates={dates} date={date} setDates={setDates} search={search} handleAddDate={handleAddDate} onUpdateWorkout={handleUpdateWorkout} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts}
+        catagorizedworkouts={catagorizedworkouts} count={count} setCounter={addtoCount} setCatagorizedWorkouts={setCatagorizedWorkouts} handleAddCategory={handleAddCategory}
+
+      // workwork={workwork}
+      // postRoutine={postRoutine} 
+      // onDateCheckbox={onDateCheckbox} 
+      // checked={checked}
 
 
       // handleupdateRoutine={handleupdateRoutine}
