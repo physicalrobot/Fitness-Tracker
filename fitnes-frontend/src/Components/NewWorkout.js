@@ -115,10 +115,10 @@ function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
 
 
                     ></input><br></br>
-                    <p
+                    {/* <p
                         className='addworkoutDate'>
                         add to date: <b>{moment(date).format('MMMM Do YYYY')}</b> <input type='checkbox' onClick={onDateCheckbox} defaultChecked={checked}></input>
-                    </p>
+                    </p> */}
 
 
                     <div className='AddToCategory'>

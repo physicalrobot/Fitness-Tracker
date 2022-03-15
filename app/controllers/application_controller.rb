@@ -71,7 +71,7 @@ end
   end
 
   post "/routines" do
-    routines = Routine.create(day_id: params[:day_id], workout_id: params[:workout_id] )
+    routines = Routine.create(name: params[:name], day_id: params[:day_id], workout_id: params[:workout_id] )
     routines.to_json
   end
   patch "/routines" do

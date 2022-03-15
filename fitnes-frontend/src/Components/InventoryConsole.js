@@ -13,9 +13,11 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
     handleRoutineWorkout,
     handleAddCategory,
     // listwrkout, 
-    postRoutine
+    postRoutine,
     // onDateCheckbox, 
     // checked 
+    listwrkout,
+    bookie,
 }
 
 
@@ -101,44 +103,46 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
         console.log(catagorizedworkouts)
     }
 
-    function listwrkout() {
+    // function listwrkout() {
 
 
 
 
-        var wrkoutdate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
-        if (catagorizedworkouts.find(function (post, index) {
-            if (post.name == wrkoutdate)
-                return true;
-        }
+    //     var wrkoutdate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
+    //     if (catagorizedworkouts.find(function (post, index) {
+    //         if (post.name == wrkoutdate)
+    //             return true;
+    //     }
 
-        )) {
-            var obj = catagorizedworkouts.find(o => o.name === date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }));
+    //     )) {
+    //         var obj = catagorizedworkouts.find(o => o.name === date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }));
 
-            let closer = obj.routines;
-            let cloyster = closer.filter(o => o.workout);
-            // let cloyster = closer.workout
+    //         let closer = obj.routines;
+    //         let cloyster = closer.filter(o => o.workout);
+    //         // let cloyster = closer.workout
 
-            var nameArray = cloyster.map(function (el) { return el.workout; });
+    //         var nameArray = cloyster.map(function (el) { return el.workout; });
 
-            let wrkouttwrk = nameArray.map(function (el) { return el.name; });
+    //         let wrkouttwrk = nameArray.map(function (el) { return el.name; });
 
-            // console.log(obj)
-            // console.log(wrkouttwrk)
-            setWorkroutines(wrkouttwrk)
-            return (wrkouttwrk);
+    //         // console.log(obj)
+    //         // console.log(wrkouttwrk)
+    //         setWorkroutines(wrkouttwrk)
+    //         return (wrkouttwrk);
 
-        }
+    //     }
 
-        else {
-            console.log('no workouts')
-        }
+    //     else {
+    //         console.log('no workouts')
+    //     }
 
 
-    }
+    // }
 
 
     function postRoutine() {
+
+
         // e.preventDefault()
 
 
@@ -179,13 +183,25 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
             })
                 .then((r) => r.json())
 
+                // .then((r) => setCatagorizedWorkouts((catagorizedworkouts) => [...catagorizedworkouts, r]))
+
                 .then(setCounter(workout.name))
 
+                .then(fetch("http://localhost:9292/day-workout")
+                    .then((r) => r.json())
 
 
 
+                    .then((wrk) => {
+
+                        setCatagorizedWorkouts(wrk)
+
+                        // const routineworkouts = listwrkout(wrk)
+                        // setCatagorizedWorkouts(routineworkouts)
+                    }))
 
 
+            // console.log(catagorizedworkouts)
 
         }
         else {
@@ -195,12 +211,11 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
 
         // console.log(currentDate)
         // console.log(dayindex)
-        setWorkroutines(listwrkout())
+        // setWorkroutines(listwrkout())
 
         console.log(workroutines)
 
     }
-
 
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////

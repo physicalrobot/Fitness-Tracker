@@ -79,10 +79,36 @@ function App() {
 
 
 
+  function listwrkout(catagorizedworkouts) {
+    var wrkoutdate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
 
 
 
+    if (catagorizedworkouts?.find(function (post, index) {
+      if (post.name == wrkoutdate)
+        return true;
+    }
 
+    )) {
+      var obj = catagorizedworkouts.find(o => o.name === date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }));
+      let closer = obj.routines;
+      let cloyster = closer.filter(o => o.workout);
+      // let cloyster = closer.workout
+
+      var nameArray = cloyster.map(function (el) { return el.workout; });
+
+      let wrkouttwrk = nameArray.map(function (el) { return el.name; });
+
+      // console.log(obj)
+      // console.log(wrkouttwrk)
+
+      return (wrkouttwrk);
+    }
+
+    else {
+      console.log('no workouts')
+    }
+  }
 
 
 
@@ -107,10 +133,18 @@ function App() {
 
     fetch("http://localhost:9292/day-workout")
       .then((r) => r.json())
-      .then((wrk) => setCatagorizedWorkouts(wrk))
+
+
+
+      .then((wrk) => {
+
+        setCatagorizedWorkouts(wrk)
+        // const routineworkouts = listwrkout(wrk)
+        // setCatagorizedWorkouts(routineworkouts)
+      })
+
 
   }, []);
-
 
 
 
@@ -231,13 +265,14 @@ function App() {
         workoutonday={workoutonday}
         setWorkoutOnDay={setWorkoutOnDay}
         count={count}
+        listwrkout={listwrkout}
 
 
 
       />
       <ProfileInfo />
       <Dictionary dates={dates} date={date} setDates={setDates} search={search} handleAddDate={handleAddDate} onUpdateWorkout={handleUpdateWorkout} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts}
-        catagorizedworkouts={catagorizedworkouts} count={count} setCounter={addtoCount} setCatagorizedWorkouts={setCatagorizedWorkouts} handleAddCategory={handleAddCategory}
+        catagorizedworkouts={catagorizedworkouts} count={count} setCounter={addtoCount} setCatagorizedWorkouts={setCatagorizedWorkouts} handleAddCategory={handleAddCategory} listwrkout={listwrkout}
 
       // workwork={workwork}
       // postRoutine={postRoutine} 

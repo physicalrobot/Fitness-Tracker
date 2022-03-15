@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import InventoryConsole from './InventoryConsole';
 
 
-function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, count, setCounter, workoutonday, postRoutine, handleRoutineWorkout, workwork, setWorkoutOnDay, catagorizedworkouts, setCatagorizedWorkouts, handleAddCategory }) {
+function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, count, setCounter, workoutonday, postRoutine, handleRoutineWorkout, workwork, setWorkoutOnDay, catagorizedworkouts, setCatagorizedWorkouts, handleAddCategory, listwrkout, bookie }) {
 
     const [groupedworkouts, setGroupedworkouts] = useState([workouts]);
 
@@ -228,6 +228,10 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
                             handleAddDate={handleAddDate}
                             count={count}
                             setCounter={setCounter}
+                            listwrkout={listwrkout}
+                            bookie={bookie}
+
+
 
                             catagorizedworkouts={catagorizedworkouts}
                             setWorkoutOnDay={setWorkoutOnDay}
