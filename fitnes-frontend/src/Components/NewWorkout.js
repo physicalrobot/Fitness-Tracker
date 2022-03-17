@@ -9,8 +9,6 @@ import { RadioGroup, Radio } from 'react-radio-group'
 
 function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
 
-    const [workout, setWorkout] = useState({});
-
     const [name, setName] = useState('');
     const [body, setBody] = useState('');
     const [group, setGroup] = useState("");
@@ -49,18 +47,7 @@ function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
             })
                 .then((r) => r.json())
                 .then(dateData => handleAddDate(dateData))
-
         }
-
-
-        // if (dates.includes(dateData.name)) {
-        //     console.log('hello')
-        // }
-        // else {
-
-        //     handleAddDate(dateData)
-
-        // }
     }
 
 
@@ -89,11 +76,7 @@ function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
                 handleAddWorkout(workoutData)
             })
             .then(checked ? handleDateCheck : console.log('not save in day'))
-
     }
-
-
-
 
 
 
@@ -115,12 +98,7 @@ function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
 
 
                     ></input><br></br>
-                    {/* <p
-                        className='addworkoutDate'>
-                        add to date: <b>{moment(date).format('MMMM Do YYYY')}</b> <input type='checkbox' onClick={onDateCheckbox} defaultChecked={checked}></input>
-                    </p> */}
-
-
+            
                     <div className='AddToCategory'>
 
 
@@ -131,10 +109,7 @@ function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
 
 
 
-
                     </div>
-
-
 
                     <textarea
                         className='AddWorkoutInputBody'
@@ -142,8 +117,6 @@ function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
                         type="text"
                         onChange={(e) => setBody(e.target.value)}
                         value={body}
-
-
                     ></textarea>
 
 
@@ -157,7 +130,7 @@ function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
 
                 </div>
             </form>
-        </div >
+        </div>
     )
 }
 

@@ -22,7 +22,6 @@ function App() {
   const [dates, setDates] = useState([])
   const [workouts, setWorkouts] = useState([]);
   const [search, setSearch] = useState("");
-  // const [routines, setRoutines] = useState([])
   const [catagorizedworkouts, setCatagorizedWorkouts] = useState()
 
 
@@ -40,23 +39,15 @@ function App() {
   function addtoCount(stuff) {
     setCounter([...count, stuff])
   }
-  ///////////////////////////////////////////////////////////
 
 
   function handleAddCategory(stuff) {
     setCatagorizedWorkouts([...catagorizedworkouts, stuff])
     console.log(catagorizedworkouts)
-
-
   }
 
-  ////////////////////////////////////////////////////////////
 
   const [workoutsdisplayed, setWorkoutsDisplayed] = useState([])
-
-
-
-
 
 
   const changeDate = (e) => {
@@ -64,24 +55,8 @@ function App() {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   function listwrkout(catagorizedworkouts) {
     var wrkoutdate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
-
 
 
     if (catagorizedworkouts?.find(function (post, index) {
@@ -91,16 +66,12 @@ function App() {
 
     )) {
       var obj = catagorizedworkouts.find(o => o.name === date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }));
+
       let closer = obj.routines;
       let cloyster = closer.filter(o => o.workout);
-      // let cloyster = closer.workout
 
       var nameArray = cloyster.map(function (el) { return el.workout; });
-
       let wrkouttwrk = nameArray.map(function (el) { return el.name; });
-
-      // console.log(obj)
-      // console.log(wrkouttwrk)
 
       return (wrkouttwrk);
     }
@@ -109,13 +80,6 @@ function App() {
       console.log('no workouts')
     }
   }
-
-
-
-
-
-
-
 
 
 
@@ -133,17 +97,9 @@ function App() {
 
     fetch("http://localhost:9292/day-workout")
       .then((r) => r.json())
-
-
-
       .then((wrk) => {
-
         setCatagorizedWorkouts(wrk)
-        // const routineworkouts = listwrkout(wrk)
-        // setCatagorizedWorkouts(routineworkouts)
       })
-
-
   }, []);
 
 
@@ -151,8 +107,6 @@ function App() {
   function handleWorkoutDisplayed(newWorkout) {
     setWorkoutsDisplayed([newWorkout]);
   }
-
-
 
   function handleAddWorkout(newWorkout) {
     setWorkouts([...workouts, newWorkout]);
@@ -162,8 +116,6 @@ function App() {
     setDates([...dates, newDate]);
   }
 
-
-
   function handleDeleteWorkout(id) {
     const updatedWorkouts = workouts.filter((workout) => workout.id !== id);
     setWorkouts(updatedWorkouts);
@@ -172,7 +124,6 @@ function App() {
   const displayedWorkouts = workouts.filter((workout) =>
     workout.name.toLowerCase().includes(search.toLowerCase())
   )
-
 
   function handleUpdateWorkout(updatedWorkoutObj) {
     const updateWorkouts = workouts.map((workout) => {
@@ -187,62 +138,12 @@ function App() {
 
 
 
-  // setting the state in a parent component isn't working for some reason 
-  // function listwrkout() {
-
-
-  //   var wrkoutdate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
-  //   if (catagorizedworkouts.find(function (post, index) {
-  //     if (post.name == wrkoutdate)
-  //       return true;
-  //   }
-
-  //   )) {
-  //     var obj = catagorizedworkouts.find(o => o.name === date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }));
-
-  //     let closer = obj.routines;
-  //     let cloyster = closer.filter(o => o.workout);
-  //     // let cloyster = closer.workout
-
-  //     var nameArray = cloyster.map(function (el) { return el.workout; });
-
-  //     let wrkouttwrk = nameArray.map(function (el) { return el.name; });
-
-  //     // console.log(obj)
-  //     // console.log(wrkouttwrk)
-  //     return (wrkouttwrk);
-  //     console.log(wrkouttwrk)
-
-  //   }
-
-  //   else {
-  //     console.log('no workouts')
-  //   }
-  // }
-
-
-  // function handleupdateRoutine() {
-
-  //   setRoutineWorkouts(listwrkout())
-  // }
-
-
-
-
-
-
-
-
-
-
-
 
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header"></header>
 
-      </header>
       <Routes>
         <Route path="/" element={<ProfileInfo />} />
         <Route path="/new-workout" element={<NewWorkout handleAddWorkout={handleAddWorkout} handleAddDate={handleAddDate} date={date} dates={dates} />} />
@@ -273,19 +174,6 @@ function App() {
       <ProfileInfo />
       <Dictionary dates={dates} date={date} setDates={setDates} search={search} handleAddDate={handleAddDate} onUpdateWorkout={handleUpdateWorkout} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts}
         catagorizedworkouts={catagorizedworkouts} count={count} setCounter={addtoCount} setCatagorizedWorkouts={setCatagorizedWorkouts} handleAddCategory={handleAddCategory} listwrkout={listwrkout}
-
-      // workwork={workwork}
-      // postRoutine={postRoutine} 
-      // onDateCheckbox={onDateCheckbox} 
-      // checked={checked}
-
-
-      // handleupdateRoutine={handleupdateRoutine}
-
-      // setCurrentDate={setCurrentDate} 
-      // currentDate={currentDate} 
-
-
       />
 
     </div>

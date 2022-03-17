@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import moment from 'moment';
-import Workout from './Workout'
 import { v4 as uuidv4 } from 'uuid';
 
 
-function TodayWorkout({ date, workouts, onWorkoutDelete, catagorizedworkouts, setWorkoutOnDay, count, routineworkouts, listwrkout, bookie }) {
-    const [workroutines, setWorkroutines] = useState([])
+function TodayWorkout({ date, workouts, catagorizedworkouts, listwrkout, bookie }) {
 
 
     const { id, name, body, group } = workouts
@@ -37,24 +35,18 @@ function TodayWorkout({ date, workouts, onWorkoutDelete, catagorizedworkouts, se
 
                 {bookie?.map((workout) => (
 
-
                     <ul key={uuidv4()} >
-
                         <li>
                             <p className='thelistofworkoutsintoday'>{workout}
                             </p>
                         </li>
-
                     </ul>
                 ))}
-
-
-
 
             </div>
 
 
-        </div >
+        </div>
 
     )
 }

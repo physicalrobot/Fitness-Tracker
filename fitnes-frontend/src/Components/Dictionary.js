@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import InventoryConsole from './InventoryConsole';
 
 
-function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, count, setCounter, workoutonday, postRoutine, handleRoutineWorkout, workwork, setWorkoutOnDay, catagorizedworkouts, setCatagorizedWorkouts, handleAddCategory, listwrkout, bookie }) {
+function Dictionary({ handleAddDate, dates, date, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, setCounter, postRoutine, catagorizedworkouts, setCatagorizedWorkouts }) {
 
     const [groupedworkouts, setGroupedworkouts] = useState([workouts]);
 
@@ -16,14 +16,9 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
 
 
 
-
     function WorkoutSearch(e) {
-
         setSearch(e.target.value)
     }
-
-
-
 
 
 
@@ -31,12 +26,10 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
         fetch("http://localhost:9292/workouts")
             .then((r) => r.json())
             .then((workouts) => setWorkouts(workouts))
-
     }
 
 
     function Arms() {
-
         fetch("http://localhost:9292/workouts/arms")
             .then((r) => r.json())
             .then((workouts) => setWorkouts(workouts))
@@ -44,7 +37,6 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
 
 
     function Cardio() {
-
         fetch("http://localhost:9292/workouts/cardio")
             .then((r) => r.json())
             .then((workouts) => setWorkouts(workouts))
@@ -52,7 +44,6 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
 
 
     function Yoga() {
-
         fetch("http://localhost:9292/workouts/yoga")
             .then((r) => r.json())
             .then((workouts) => setWorkouts(workouts))
@@ -60,7 +51,6 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
 
 
     function Core() {
-
         fetch("http://localhost:9292/workouts/core")
             .then((r) => r.json())
             .then((workouts) => setWorkouts(workouts))
@@ -68,64 +58,7 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
 
 
 
-
-    // const [index, setIndex] = useState();
-
-
-    // function IndexSetter() {
-    //     setCurrentDate(moment(date).format('MMMM Do YYYY'))
-    //     setIndex(dates.map(function (e) { return e.name; }).indexOf(currentDate) + 1);
-
-
-    // }
-
-    // const [currentDate, setCurrentDate] = useState("");
-
-
-
-
-    // function postRoutine() {
-    //     setCurrentDate(moment(date).format('MMMM Do YYYY'))
-    //     var index = (dates.map(function (e) { return e.name; }).indexOf(currentDate) + 1);
-
-    //     //getting a value behind the updated value for some reason. 
-    //     console.log(currentDate)
-    //     console.log(index)
-
-
-    //     if (dates.find(function (post, index) {
-    //         if (post.name == currentDate)
-    //             return true;
-    //     }
-
-    //     )) {
-
-
-    //         fetch("http://localhost:9292/routines", {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify({
-    //                 day_id: index,
-
-    //             }),
-    //         })
-    //             .then((r) => r.json())
-    //             .then(day => handleAddRoutine(day))
-    //     }
-    //     else {
-    //         console.log("the routine doesn't exist");
-
-
-    //     }
-
-    // }
-
-
-
     return (
-
 
         <div className='WorkoutInventoryConsole'>
             <div className="InventoryTitle">Workout Inventory</div>
@@ -144,7 +77,6 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
             <div className='searchandnewbutton'>
                 <button className="SearchButton" onClick={All}>All</button>
                 <Link to="/new-workout"><button className="AddNewWorkout"> New<span></span>
-
                 </button></Link>
             </div>
 
@@ -157,7 +89,6 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
                             <path d="M21.8688 140.888L122.009 127.804V52.3332M28.8488 55.6564L51.0054 34.01L69.4267 47.5382L88.3649 69.178H99.6296L28.8488 55.6564ZM45.0852 96.2278L36.967 101.638H15.3271L45.0852 96.2278Z" stroke="white" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M136.662 142.02L122.008 127.805M136.668 39.25L122.002 52.3333L111.208 62.1458L136.668 39.25Z" stroke="white" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-
                     </div>
                 </button>
 
@@ -187,9 +118,6 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
                                 </clipPath>
                             </defs>
                         </svg>
-
-
-
                     </div>
                 </button>
 
@@ -199,60 +127,30 @@ function Dictionary({ handleAddDate, setDates, dates, date, wkouts, search, onUp
                         <svg width="179" height="179" viewBox="0 0 179 179" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M96.958 14.9167C93.0019 14.9167 89.2077 16.4883 86.4103 19.2857C83.6129 22.0832 82.0413 25.8773 82.0413 29.8334C82.0413 33.7896 83.6129 37.5837 86.4103 40.3811C89.2077 43.1785 93.0019 44.7501 96.958 44.7501C105.237 44.7501 111.875 38.1122 111.875 29.8334C111.875 25.8773 110.303 22.0832 107.506 19.2857C104.708 16.4883 100.914 14.9167 96.958 14.9167ZM29.833 52.2084V67.1251H74.583V111.875L36.7693 149.689L47.2855 160.354L97.4055 110.16L126.791 127.761V156.625H141.708V123.585C141.708 120.9 140.366 118.513 137.979 117.17L111.875 101.433V67.1251H156.625V52.2084H29.833Z" fill="white" />
                         </svg>
-
-
                     </div>
                 </button>
-
-
-
-
-
-
-
-
             </div>
 
-            <div className='InventoryOutput'>
 
+            <div className='InventoryOutput'>
                 <ul key={uuidv4()}>
                     {workouts.map((workout) => (
                         <InventoryConsole
                             dates={dates}
                             date={date}
-                            key={workout.id}
                             workout={workout}
                             handleDeleteClick={onWorkoutDelete}
-                            setGroupedworkouts={setGroupedworkouts}
                             onUpdateWorkout={onUpdateWorkout}
                             handleAddDate={handleAddDate}
-                            count={count}
                             setCounter={setCounter}
-                            listwrkout={listwrkout}
-                            bookie={bookie}
-
-
-
                             catagorizedworkouts={catagorizedworkouts}
-                            setWorkoutOnDay={setWorkoutOnDay}
-                            workoutonday={workoutonday}
-                            workwork={workwork}
-
                             setCatagorizedWorkouts={setCatagorizedWorkouts}
-                            handleRoutineWorkout={handleRoutineWorkout}
-                            handleAddCategory={handleAddCategory}
-
-
                             postRoutine={postRoutine}
                         />
                     ))}
 
                 </ul>
-
-
             </div>
-
-
         </div>
 
 
