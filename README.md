@@ -7,7 +7,7 @@
 
 ## Introduction
 
-This is app tracks the workouts the workouts I plan to do at the gym. You can create, edit, delete and schedule workouts to specific days on the calendar.
+This is app tracks the workouts you plan to do at the gym. You can create, edit, delete and schedule workouts to specific days on the calendar.
 
 The focus of this project is **building a Sinatra API backend** that uses
 **Active Record** to access and persist data in a database, which will be used
